@@ -30,6 +30,7 @@ export class AppComponent {
   toggleContent(){
    this.count += 1;
    this.countArr.push(this.count);
+  //  this.displayStatus = !this.displayStatus --> instructor solution
    return this.count % 2 === 0 ? this.displayStatus = true : this.displayStatus = false;
    
   }

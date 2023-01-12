@@ -21,6 +21,7 @@
             <button class="btn btn-primary" (click)="toggleContent()">Display Details</button>
             <p *ngIf="displayStatus; else noContent">{{ content }}</p>
             <p [ngStyle]="{backgroundColor: getColor()}" [ngClass]="{white: count >= 5}" *ngFor="let count of countArr">{{ count }}</p>
+            <!-- <p [ngStyle]="{backgroundColor: i >= 4 ? 'blue' : 'transparent'}" [ngClass]="{white: i >= 4}" *ngFor="let count of countArr; let i = index">{{ count }}</p> -->
             <ng-template #noContent></ng-template>
     </div>
 </div>
