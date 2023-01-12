@@ -20,7 +20,7 @@
             <h3>Assignment: Directives</h3>
             <button class="btn btn-primary" (click)="toggleContent()">Display Details</button>
             <p *ngIf="displayStatus; else noContent">{{ content }}</p>
-            <p [ngStyle]="{backgroundColor: getColor()}" [ngClass]="{white: count >= 5}">{{ count }}</p>
+            <p [ngStyle]="{backgroundColor: getColor()}" [ngClass]="{white: count >= 5}" *ngFor="let count of countArr">{{ count }}</p>
             <ng-template #noContent></ng-template>
     </div>
 </div>
