@@ -5,6 +5,7 @@
         <h3>I'm in the AppComponent!</h3> 
         <hr>
         <app-servers></app-servers>
+
         <!-- <div app-servers></div> -->
         <!-- <div class="app-servers"></div> -->
         <!-- <app-warning-alert></app-warning-alert> -->
@@ -15,6 +16,12 @@
         <input type="text" class="form-control" [(ngModel)]="userName">
 <p>{{ userName }}</p>
 <button class="btn btn-primary" [disabled]="userName === ''" (click)="userName = ''">Reset User</button> -->
+
+            <h3>Assignment: Directives</h3>
+            <button class="btn btn-primary" (click)="toggleContent()">Display Details</button>
+            <p *ngIf="displayStatus; else noContent">{{ content }}</p>
+            <p [ngStyle]="{backgroundColor: getColor()}" [ngClass]="{white: count >= 5}">{{ count }}</p>
+            <ng-template #noContent></ng-template>
     </div>
 </div>
 </div>
