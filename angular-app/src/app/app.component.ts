@@ -11,7 +11,6 @@ import { Component } from '@angular/core';
   `]
 })
 export class AppComponent {
-  allowUser = false;
   userName = '';
 
   constructor(){
@@ -21,7 +20,4 @@ export class AppComponent {
     
   }
   
-  onUpdateUserName(event:any){
-    this.userName = '';
-}
 }
