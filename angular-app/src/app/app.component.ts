@@ -11,5 +11,17 @@ import { Component } from '@angular/core';
   `]
 })
 export class AppComponent {
-  title = 'angular-app';
+  allowUser = false;
+  userName = '';
+
+  constructor(){
+
+  }
+  ngOnInit() {
+    
+  }
+  
+  onUpdateUserName(event:any){
+    this.userName = '';
+}
 }
