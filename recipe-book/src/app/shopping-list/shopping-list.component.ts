@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./shopping-list.component.css']
 })
 export class ShoppingListComponent {
+  ingredients = []
 
+  constructor(){ }
+
+  ngOnInit(){ }
 }
