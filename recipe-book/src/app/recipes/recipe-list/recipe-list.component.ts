@@ -8,6 +8,7 @@ import { Recipe } from '../recipe.model';
 })
 export class RecipeListComponent implements OnInit{
   recipes: Recipe[] =[
+  new Recipe('A Test Recipe', 'This is simply a test', 'https://assets.magimix.com/files/rec_82280/bouillon%20(3)_photo.jpg'),
   new Recipe('A Test Recipe', 'This is simply a test', 'https://assets.magimix.com/files/rec_82280/bouillon%20(3)_photo.jpg')
 ]
   constructor(){
