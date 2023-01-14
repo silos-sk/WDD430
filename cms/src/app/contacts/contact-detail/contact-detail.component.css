@@ -1,0 +1,13 @@
+.flex{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.margin-l {
+   margin: 0 0 0 0.5rem;
+}
+
+.margin{
+    margin: 0 3rem;
+}
