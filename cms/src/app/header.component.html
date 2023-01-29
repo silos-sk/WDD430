@@ -13,11 +13,13 @@
                 <li class="nav-item"><a class="nav-link" href="#" (click)="onSelected('contacts')">Contacts</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle nav-link p-2" role="button">Manage <span class="caret"></span></a>
+                <li class="dropdown" appDropdown>
+                    <a href="#" class="dropdown-toggle nav-link p-2" role="button">User <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#"></a>Save Data</li>
-                        <li><a href="#"></a>Fetch Data</li>
+                        <li><a href="#"></a>Login</li>
+                        <li><a href="#"></a>Other</li>
+                        <hr>
+                        <li><a href="#"></a>Logout</li>
                     </ul>
                 </li>
             </ul>
