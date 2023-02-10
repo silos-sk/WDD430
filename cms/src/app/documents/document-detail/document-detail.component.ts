@@ -24,7 +24,7 @@ ngOnInit(): void {
   )
 }
 
-onEditRecipe(){
+onEditDoc(){
   {this.router.navigate(['edit'], {relativeTo: this.route})}
   // this.router.navigate['../', this.id, 'edit'], {relativeTo: this.route }
 }
