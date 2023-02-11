@@ -35,7 +35,7 @@ import { DocumentEditComponent } from './documents/document-edit/document-edit.c
     MessageEditComponent,
     MessageListComponent,
     DropdownDirective,
-    DocumentEditComponent
+    DocumentEditComponent,
   ],
   imports: [
     BrowserModule,

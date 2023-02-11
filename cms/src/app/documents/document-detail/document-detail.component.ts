@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { WindRefService } from 'src/app/wind-ref.service';
 import { Document } from '../document.model';
 import { DocumentService } from '../document.service';
 @Component({
@@ -10,11 +11,13 @@ import { DocumentService } from '../document.service';
 export class DocumentDetailComponent {
  document: Document;
  id: number;
+ nativeWindow: any;
 
  constructor(private documentService: DocumentService,
-  private route: ActivatedRoute, private router: Router){}
+  private route: ActivatedRoute, private router: Router, private windRefService: WindRefService){}
 
 ngOnInit(): void {
+  this.nativeWindow = this.windRefService.getNativeWindow();
   this.route.params
   .subscribe(
     (params: Params) =>{
@@ -27,6 +30,12 @@ ngOnInit(): void {
 onEditDoc(){
   {this.router.navigate(['edit'], {relativeTo: this.route})}
   // this.router.navigate['../', this.id, 'edit'], {relativeTo: this.route }
+}
+
+onView(){
+  if(this.document.url){
+    this.nativeWindow.open(this.document.url);
+  }
 }
 
 }
