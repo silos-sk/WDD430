@@ -40,7 +40,7 @@ onView(){
 
 onDelete(){
   this.documentService.deleteDocument(this.document);
-  {this.router.navigate(['documents'], {relativeTo: this.route})}
+  {this.router.navigateByUrl('documents')}
 }
 
 }
