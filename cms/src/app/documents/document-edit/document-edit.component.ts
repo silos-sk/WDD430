@@ -1,14 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import { Document } from '../document.model';
 
 @Component({
   selector: 'cms-documents-edit',
   templateUrl: './document-edit.component.html',
   styleUrls: ['./document-edit.component.css']
 })
-export class DocumentEditComponent {
+export class DocumentEditComponent implements OnInit {
+  originalDocument: Document;
+  document: Document;
   id: number;
-  editMode = false;
+  editMode: boolean = false;
 
   constructor(private route: ActivatedRoute){}
 
@@ -21,5 +24,9 @@ export class DocumentEditComponent {
         console.log(this.editMode)
       }
     )
+  }
+
+  onSubmit(){
+    console.log()
   }
 }
