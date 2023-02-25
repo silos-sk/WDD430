@@ -4,7 +4,13 @@
             <div class="panel-heading flex"><h2>Contacts</h2><a (click)="onAddContact()">
                 <button class="btn btn-success pull-right">New Contact</button></a></div>
             <div class="panel-body">
-                <cms-contact-item *ngFor="let contactEl of contacts; let i = index" [contact]="contactEl" [index]="i"></cms-contact-item>
+                <!-- <cms-contact-item *ngFor="let contactEl of contacts; let i = index" [contact]="contactEl" [index]="i"></cms-contact-item> -->
+
+                <cms-contact-item
+           *ngFor="let contactEl of contacts; let i = index"
+           [contact]="contactEl" [index]="i"
+           dnd-draggable [dragEnabled]="true" [dragData]="contactEl" [dropZones]="['contactGroup']"
+            ></cms-contact-item>
             </div>
           </div>
 

@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
 import { Document } from '../document.model';
 import { DocumentService } from '../document.service';
 
@@ -11,7 +10,7 @@ import { DocumentService } from '../document.service';
   styleUrls: ['./document-edit.component.css']
 })
 export class DocumentEditComponent implements OnInit {
-  @ViewChild('f', { static: false }) docForm: NgForm;
+  // @ViewChild('f', { static: false }) docForm: NgForm;
   // subscription: Subscription;
   originalDocument: Document;
   document: Document;
@@ -19,6 +18,23 @@ export class DocumentEditComponent implements OnInit {
   editMode: boolean = false;
 
   constructor(private documentService: DocumentService, private router: Router, private route: ActivatedRoute){}
+
+  // ngOnInit() {
+  //   this.route.params.subscribe((params: Params) => {
+  //     const id = params['id'];
+  //     if (!id) {
+  //       this.editMode = false;
+  //       return;
+  //     }
+  //     this.originalDocument = this.documentService.getDocument(id);
+
+  //     if (!this.originalDocument) {
+  //       return;
+  //     }
+  //     this.editMode = true;
+  //     this.document = JSON.parse(JSON.stringify(this.originalDocument));
+  //   })
+  // }
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
@@ -28,18 +44,15 @@ export class DocumentEditComponent implements OnInit {
         return;
       }
       this.originalDocument = this.documentService.getDocument(id);
+ 
 
       if (!this.originalDocument) {
         return;
       }
       this.editMode = true;
+      console.log("Edit mode is: "+ this.editMode);
+      // copies originalDocument object and into this.document object - no reference passed
       this.document = JSON.parse(JSON.stringify(this.originalDocument));
-
-      this.docForm.setValue({
-        name: this.document.name,
-        description: this.document.description,
-        url: this.document.url
-      })
     })
   }
 
@@ -59,9 +72,9 @@ export class DocumentEditComponent implements OnInit {
    
     const value = form.value // get values from form’s fields
 
-    const newDocument = new Document(value.id, value.name, value.description, value.url, " ");
+    const newDocument = new Document(value.id, value.name, value.description, value.url, value.children);
 
-    if (this.editMode == true){
+    if (this.editMode === true){
       this.documentService.updateDocument(this.originalDocument, newDocument)
     } else {
       this.documentService.addDocument(newDocument)
@@ -71,7 +84,7 @@ export class DocumentEditComponent implements OnInit {
  }
 
  onCancel() {
-  this.router.navigate(['../'], {relativeTo: this.route});
+  this.router.navigateByUrl('documents');
 }
 
 }

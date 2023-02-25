@@ -1,7 +1,7 @@
 <div class="panel panel-default">
     <div class="panel-body">
-        <!-- (ngSubmit)="onSubmit(f)" -->
-      <form id="contact-edit" #f="ngForm" >
+
+      <form id="contact-edit" #f="ngForm" (ngSubmit)="onSubmit(f)" >
         <div class="row">
           <div class="col-sm-12 form-group">
             <label for="name">Name:</label>
@@ -75,7 +75,8 @@
             <label for="groupList">Group Contacts:</label>
   
             <div class="row" id="groupList"
-                style="min-height: 3rem;" >
+                style="min-height: 3rem;" 
+                dnd-droppable [dropZones]="['contactGroup']" (onDropSuccess)="addToGroup($event)">
   
               <div *ngFor="let contact of groupContacts; let i = index">
                 <div>
@@ -83,8 +84,7 @@
                   <button class="btn btn-danger col-sm-2 deleteButton" (click)="onRemoveItem(i)">X</button>
                 </div>
               </div>
-              <!-- *ngIf="groupContacts?.length < 1" -->
-              <span class="dragMsg">Drag contacts in group here</span>
+              <span class="dragMsg" *ngIf="groupContacts?.length < 1">Drag contacts in group here</span>
             </div>
             <div class="alert alert-danger" *ngIf="!name.valid && name.untouched || !email.valid && email.untouched">The Name and Email fields are required.</div>
           </div>
@@ -94,8 +94,8 @@
         <div class="row">
           <div class="col-xs-12 btn-toolbar">
             <button class="btn btn-success" type="submit" [disabled]="!f.valid">Save</button>
-            <button class="btn btn-primary" type="button" >Cancel</button>
-            <!-- (click)="onCancel()" -->
+            <button class="btn btn-primary" type="button" (click)="onCancel()">Cancel</button>
+
           </div>
         </div>
   
