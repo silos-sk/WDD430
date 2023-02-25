@@ -11,7 +11,7 @@ import { DocumentService } from '../document.service';
   styleUrls: ['./document-edit.component.css']
 })
 export class DocumentEditComponent implements OnInit {
-  // @ViewChild('f', { static: false }) docForm: NgForm;
+  @ViewChild('f', { static: false }) docForm: NgForm;
   // subscription: Subscription;
   originalDocument: Document;
   document: Document;
@@ -34,8 +34,15 @@ export class DocumentEditComponent implements OnInit {
       }
       this.editMode = true;
       this.document = JSON.parse(JSON.stringify(this.originalDocument));
+
+      this.docForm.setValue({
+        name: this.document.name,
+        description: this.document.description,
+        url: this.document.url
+      })
     })
   }
+
 
   // ngOnInit(): void {
   //   this.route.params
