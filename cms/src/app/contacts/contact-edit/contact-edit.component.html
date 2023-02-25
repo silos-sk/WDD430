@@ -78,9 +78,9 @@
                 style="min-height: 3rem;" 
                 dnd-droppable [dropZones]="['contactGroup']" (onDropSuccess)="addToGroup($event)">
   
-              <div *ngFor="let contact of groupContacts; let i = index">
+              <div *ngFor="let contactEl of groupContacts; let i = index">
                 <div>
-                  <cms-contact-item class="col-sm-11" [contact]="contact"></cms-contact-item>
+                  <cms-contact-item class="col-sm-11" [contact]="contactEl"></cms-contact-item>
                   <button class="btn btn-danger col-sm-2 deleteButton" (click)="onRemoveItem(i)">X</button>
                 </div>
               </div>
