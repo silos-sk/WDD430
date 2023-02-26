@@ -73,6 +73,7 @@ updateDocument(originalDocument: Document, newDocument: Document) {
       return
   }
   let pos = this.documents.indexOf(originalDocument);
+  console.log(`The index if pos is ${pos}`)
   if (pos < 0) {
       return;
   }

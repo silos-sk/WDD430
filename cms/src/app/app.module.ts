@@ -19,6 +19,7 @@ import { DropdownDirective } from './dropdown-directive';
 import { MessageService } from './messages/message.service';
 import { DocumentEditComponent } from './documents/document-edit/document-edit.component';
 import { ContactEditComponent } from './contacts/contact-edit/contact-edit.component';
+import { DndModule } from 'ng2-dnd';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { ContactEditComponent } from './contacts/contact-edit/contact-edit.compo
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    DndModule.forRoot(),
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]

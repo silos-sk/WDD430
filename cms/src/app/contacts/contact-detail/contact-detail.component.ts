@@ -18,15 +18,15 @@ export class ContactDetailComponent implements OnInit {
     this.route.params
   .subscribe(
     (params: Params) =>{
-      this.id = params['id'];
+      this.id = +params['id'];
       this.contact = this.contactService.getCont(this.id);
     }
   )
   }
 
   onEditContact(){
-    {this.router.navigate(['edit'], {relativeTo: this.route})}
-    // this.router.navigate['../', this.id, 'edit'], {relativeTo: this.route }
+    // {this.router.navigate(['edit'], {relativeTo: this.route})}
+    this.router.navigate(['contacts', this.id, 'edit']), {relativeTo: this.route }
   }
   
   onDelete(){
