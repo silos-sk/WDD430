@@ -30,6 +30,8 @@ export class ContactEditComponent implements OnInit {
           return;
         }
         this.originalContact = this.contactService.getCont(id);
+        // console.log(`The original contact is`);
+        // console.log(this.originalContact)
   
         if (!this.originalContact) {
           return;
@@ -37,8 +39,16 @@ export class ContactEditComponent implements OnInit {
         this.editMode = true;
         this.contact = JSON.parse(JSON.stringify(this.originalContact));
         
-        if (this.groupContacts.includes(this.contact)){
-          this.groupContacts = this.groupContacts.slice();
+        // console.log('This contact is')
+        // console.log(this.contact.group)
+        // The only difference is that the algorithm must determine if the contact has a group (in other words, the group property has a value). If it does, create a cloned copy of the array of Contact objects assigned to the group property in the originalContact and assign the cloned array to the groupContacts property. Use the JSON parse() and stringify() methods to make a clone of the originalContact.
+
+        // console.log('The parsed contact is')
+        // console.log(this.contact)
+
+        if (this.contact.group != null){
+          this.groupContacts = this.contact.group.slice()
+          
         }
       })
     }
@@ -51,6 +61,10 @@ export class ContactEditComponent implements OnInit {
   
       if (this.editMode == true){
         this.contactService.updateContact(this.originalContact, newContact)
+
+        // Add the added groupContacts array to newContact group
+        newContact.group = this.groupContacts
+        console.log(newContact);
       } else {
         this.contactService.addContact(newContact)
       }
@@ -84,6 +98,11 @@ export class ContactEditComponent implements OnInit {
      return;
   }
   this.groupContacts.push(selectedContact);
+  this.contact.group = this.groupContacts;
+  console.log('this is the contact with the added contact groups')
+  console.log(this.contact)
+
+
 }
 
 onRemoveItem(index: number) {
