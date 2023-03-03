@@ -19,36 +19,6 @@ export class DocumentService {
    
   }
 
-  // storeRecipes() {
-  //   const recipes = this.recipeService.getRecipes();
-  //   this.http
-  //     .put(
-  //       'https://ng-course-recipe-book-e517e-default-rtdb.europe-west1.firebasedatabase.app/recipes.json',
-  //       recipes
-  //     )
-  //     .subscribe(response => {
-  //       console.log(response);
-  //     });
-  // }
-//   success(documents: Document[] ){
-//     this.documents = documents;
-//     this.maxDocumentId = this.getMaxId();
-//     documents.sort((current, next)=>{
-//       if (current < next){
-//         return -1;
-//       } else if (current > next){
-//         return 0;
-//       }
-//     });
-//     let documentsListClone = this.documents.slice()
-//     this.documentChangedEvent.next(documentsListClone);
-//   }
-
-//   error(error: any) {
-//    console.log(error);
-//  } 
-
-
   getDocuments() {
     return this.http
       .get<Document[]>(
@@ -69,7 +39,6 @@ export class DocumentService {
        console.log(error);
      } 
     )
-      
   }
 
   storeDocuments() {
@@ -78,8 +47,6 @@ export class DocumentService {
       this.documentChangedEvent.next(this.documents.slice())
     )
    }
-
-
 
   // getDocuments(): Document[]{
   //   return this.documents.slice();

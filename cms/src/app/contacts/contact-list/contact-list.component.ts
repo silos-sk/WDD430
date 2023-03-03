@@ -17,10 +17,11 @@ export class ContactListComponent implements OnInit, OnDestroy {
     constructor(private contactService: ContactService, private router: Router, private route:ActivatedRoute){}
 
     ngOnInit(): void {
-      this.contacts = this.contactService.getContacts()
+      // this.contacts = this.contactService.getContacts()
       this.subscription = this.contactService.contactChangedEvent.subscribe((contact: Contact[])=>{
         this.contacts = contact;
     })
+    this.contactService.getContacts();
     }
 
     search(value: string){
