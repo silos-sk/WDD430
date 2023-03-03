@@ -10,16 +10,27 @@ import { DocumentService } from '../document.service';
   styleUrls: ['./document-list.component.css']
 })
 export class DocumentListComponent implements OnInit, OnDestroy {
-  documents: Document[];
+  documents: Document[] = [];
   private subscription: Subscription;
 
   constructor(private documentService: DocumentService, private router: Router, private route: ActivatedRoute){}
 
-  ngOnInit() {
-    this.documents = this.documentService.getDocuments();
-    this.subscription = this.documentService.documentChangedEvent.subscribe((document: Document[])=>{
-      this.documents = document;
-  })}
+//   ngOnInit() {
+//     // this.documents = this.documentService.getDocuments();
+//     this.subscription = this.documentService.documentChangedEvent.subscribe((documents: Document[])=>{
+//       this.documents = documents;
+//   })
+  
+// }
+
+ngOnInit() {
+  this.subscription = this.documentService.documentChangedEvent
+  .subscribe((documents: Document[]) => {
+    this.documents = documents;
+  })
+
+  this.documentService.getDocuments();
+}
 
   onAddDocument(){
     this.router.navigate(['new'], {relativeTo: this.route})
