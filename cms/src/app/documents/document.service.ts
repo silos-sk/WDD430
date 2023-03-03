@@ -129,7 +129,8 @@ addDocument(newDocument: Document) {
   newDocument.id = this.maxDocumentId.toString();
   this.documents.push(newDocument);
   let documentsListClone = this.documents.slice()
-  this.documentChangedEvent.next(documentsListClone)
+  // this.documentChangedEvent.next(documentsListClone)
+  this.storeDocuments();
 }
 
 updateDocument(originalDocument: Document, newDocument: Document) {
@@ -144,7 +145,8 @@ updateDocument(originalDocument: Document, newDocument: Document) {
   newDocument.id = originalDocument.id;
   this.documents[pos] = newDocument;
   let documentsListClone = this.documents.slice();
-  this.documentChangedEvent.next(documentsListClone);
+  // this.documentChangedEvent.next(documentsListClone);
+  this.storeDocuments();
 }
 
 deleteDocument(document: Document) {
@@ -157,7 +159,8 @@ deleteDocument(document: Document) {
   }
   this.documents.splice(pos, 1);
   let documentsListClone = this.documents.slice();
-  this.documentChangedEvent.next(documentsListClone);
+  // this.documentChangedEvent.next(documentsListClone);
+  this.storeDocuments();
 }
   
 }
