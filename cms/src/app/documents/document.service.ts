@@ -2,6 +2,7 @@ import { Injectable, EventEmitter} from '@angular/core';
 import { MOCKDOCUMENTS } from './MOCKDOCUMENTS';
 import { Document } from './document.model';
 import { Subject } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -12,14 +13,77 @@ export class DocumentService {
   documentSelectedEvent = new EventEmitter<Document>();
 
   documents: Document[];
-  constructor() { 
+  constructor( private http: HttpClient) { 
     this.documents = MOCKDOCUMENTS;
     this.maxDocumentId = this.getMaxId();
+   
   }
 
-  getDocuments(): Document[]{
-    return this.documents.slice();
+  // storeRecipes() {
+  //   const recipes = this.recipeService.getRecipes();
+  //   this.http
+  //     .put(
+  //       'https://ng-course-recipe-book-e517e-default-rtdb.europe-west1.firebasedatabase.app/recipes.json',
+  //       recipes
+  //     )
+  //     .subscribe(response => {
+  //       console.log(response);
+  //     });
+  // }
+//   success(documents: Document[] ){
+//     this.documents = documents;
+//     this.maxDocumentId = this.getMaxId();
+//     documents.sort((current, next)=>{
+//       if (current < next){
+//         return -1;
+//       } else if (current > next){
+//         return 0;
+//       }
+//     });
+//     let documentsListClone = this.documents.slice()
+//     this.documentChangedEvent.next(documentsListClone);
+//   }
+
+//   error(error: any) {
+//    console.log(error);
+//  } 
+
+
+  getDocuments() {
+    return this.http
+      .get<Document[]>(
+        'https://angular-cms-9c0a8-default-rtdb.europe-west1.firebasedatabase.app/documents.json'
+      ).subscribe((documents: Document[] ) => {
+        this.documents = documents;
+        this.maxDocumentId = this.getMaxId();
+        documents.sort((current, next)=>{
+          if (current < next){
+            return -1;
+          } else if (current > next){
+            return 0;
+          }
+        });
+        let documentsListClone = this.documents.slice()
+        this.documentChangedEvent.next(documentsListClone);
+      }, (error: any) => {
+       console.log(error);
+     } 
+    )
+      
   }
+
+  storeDocuments() {
+    this.http.put("https://angular-cms-9c0a8-default-rtdb.europe-west1.firebasedatabase.app/documents.json", JSON.stringify(this.documents)
+    , { headers: new HttpHeaders({"Content-Type" : "application/json"})}).subscribe(()=>
+      this.documentChangedEvent.next(this.documents.slice())
+    )
+   }
+
+
+
+  // getDocuments(): Document[]{
+  //   return this.documents.slice();
+  // }
 
   getDoc(index: number){
     return this.documents[index];
