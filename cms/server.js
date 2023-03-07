@@ -10,7 +10,6 @@ var logger = require('morgan');
 var index = require('./server/routes/app');
 
 // Get defined routing files
-var index = require('./server/routes/app');
 const messageRoutes = require('./server/routes/messages')
 const contactRoutes = require('./server/routes/contacts')
 const documentsRoutes = require('./server/routes/documents')
