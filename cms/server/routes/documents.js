@@ -60,7 +60,7 @@ router.get('/', (req, res, next) => {
   
         Document.updateOne({ id: req.params.id }, document)
           .then(result => {
-            result.status(204).json({
+            res.status(204).json({
               message: 'Document updated successfully'
             })
           })
