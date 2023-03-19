@@ -15,15 +15,6 @@ router.get('/', (req, res, next) => {
     
 })
     
-    // .then(res => {
-    //     res.status(200).json({res})
-    //   })
-    // .catch(error =>{
-    //     res.status(500)
-    //     .json({ message: error.message });
-    //     })
-// });
-
 // Create new document
  router.post('/', (req, res, next) => {
     const maxDocumentId = sequenceGenerator.nextId("documents");
@@ -31,8 +22,10 @@ router.get('/', (req, res, next) => {
     const document = new Document({
       id: maxDocumentId,
       name: req.body.name,
+      url: req.body.url,
+      children: req.body.children,
       description: req.body.description,
-      url: req.body.url
+      
     });
   
     document.save()

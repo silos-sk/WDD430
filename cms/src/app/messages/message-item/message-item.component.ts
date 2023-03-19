@@ -12,11 +12,16 @@ import { Contact } from 'src/app/contacts/contact.model';
 export class MessageItemComponent implements OnInit {
   @Input() message: Message;
   messageSender: string;
+  contact: Contact;
 
   constructor(private contactService: ContactService){}
 
   ngOnInit(): void {
-    const contact: Contact = this.contactService.getContact(this.message.sender);
-      this.messageSender = contact.name;
+    this.contact = this.contactService.getContact(this.message.sender);
+    
+    if (this.contact){
+      this.messageSender = this.contact.name;
+    }
+     
   }
 }
