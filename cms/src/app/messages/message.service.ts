@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, EventEmitter } from '@angular/core';
+import { Subject } from 'rxjs';
 import { Message } from './message.model';
 import { MOCKMESSAGES } from './MOCKMESSAGES';
 
@@ -8,12 +9,25 @@ import { MOCKMESSAGES } from './MOCKMESSAGES';
 })
 export class MessageService {
   maxMessageId: number;
-  messageChangedEvent = new EventEmitter<Message[]>();
+  messageChangedEvent = new Subject<Message[]>();
 
-  private messages: Message[];
+  messages: Message[];
   constructor(private http:HttpClient) { 
     this.messages = MOCKMESSAGES;
     this.maxMessageId = this.getMaxId();
+  }
+
+  sortAndSend(){
+    this.messages.sort((a,b)=>{
+      if (a.sender < b.sender) {
+        return -1;
+      }
+      if (a.sender > b.sender) {
+        return 1;
+      }
+      return 0;
+    });
+    this.messageChangedEvent.next(this.messages.slice())
   }
 
   getMaxId(): number {
@@ -28,10 +42,12 @@ export class MessageService {
     return maxId;
   }
 
+  // 'https://angular-cms-9c0a8-default-rtdb.europe-west1.firebasedatabase.app/messages.json'
+
   getMessages() {
     return this.http
       .get<Message[]>(
-        'https://angular-cms-9c0a8-default-rtdb.europe-west1.firebasedatabase.app/messages.json'
+        'http://localhost:3000/messages'
       ).subscribe((messages: Message[] ) => {
         this.messages = messages;
         this.maxMessageId = this.getMaxId();
@@ -69,9 +85,33 @@ export class MessageService {
     } return null
   }
 
-  addMessage(message: Message){
-    this.messages.push(message);
-    // this.messageChangedEvent.emit(this.messages.slice());
-    this.storeMessages();
+  // addMessage(message: Message){
+  //   this.messages.push(message);
+  //   // this.messageChangedEvent.emit(this.messages.slice());
+  //   this.storeMessages();
+  // }
+
+  addMessage(message: Message) {
+    if (!message) {
+      return;
+    }
+  
+    // make sure id of the new Message is empty
+    message.id = '';
+  
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+  
+    // add to database
+    this.http.post<{ message: String,messageText: Message }>('http://localhost:3000/messages',
+      message,
+      { headers: headers })
+      .subscribe(
+        (responseData) => {
+          // add new message to messages
+          console.log(responseData)
+          this.messages.push(responseData.messageText);
+          this.sortAndSend();
+        }
+      );
   }
 }
