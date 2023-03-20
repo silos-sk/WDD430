@@ -11,6 +11,7 @@ import { DocumentService } from '../document.service';
 })
 export class DocumentDetailComponent implements OnInit, OnDestroy{
  document: Document;
+ documents: Document[];
  id: number;
  nativeWindow: any;
  subscription: Subscription;
@@ -25,6 +26,7 @@ ngOnInit(): void {
     (params: Params) =>{
       this.id = params['id'];
       this.document = this.documentService.getDoc(this.id);
+
     }
   )
 }

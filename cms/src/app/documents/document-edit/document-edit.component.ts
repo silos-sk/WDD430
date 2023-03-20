@@ -27,7 +27,6 @@ export class DocumentEditComponent implements OnInit {
         return;
       }
       this.originalDocument = this.documentService.getDoc(id);
- 
       if (!this.originalDocument) {
         return;
       }
