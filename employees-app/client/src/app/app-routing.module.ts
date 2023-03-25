@@ -1,14 +1,27 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { EmployeesListComponent } from './employees-list/employees-list.component';
-import { AddEmployeeComponent } from './add-employee/add-employee.component'; // <-- add this line
-import { EditEmployeeComponent } from './edit-employee/edit-employee.component'; // <-- add this line
+import { EmployeesListComponent } from './employees/employees-list/employees-list.component';
+import { AddEmployeeComponent } from './employees/add-employee/add-employee.component'; 
+import { EditEmployeeComponent } from './employees/edit-employee/edit-employee.component'; 
+import { AllocationComponent } from './allocation/allocation.component';
  
 const routes: Routes = [
- { path: '', redirectTo: 'employees', pathMatch: 'full' },
- { path: 'employees', component: EmployeesListComponent },
- { path: 'employees/new', component: AddEmployeeComponent }, // <-- add this line
- { path: 'employees/edit/:id', component: EditEmployeeComponent }]; // <-- add this line
+//  { path: '', redirectTo: 'employees', pathMatch: 'full' },
+//  { path: 'employees', component: EmployeesListComponent, },
+//  { path: 'employees/new', component: AddEmployeeComponent }, 
+//  { path: 'employees/edit/:id', component: EditEmployeeComponent },
+//  { path: 'allocation', component: EditEmployeeComponent }]; 
+ 
+ { path: '', redirectTo: 'allocation', pathMatch: 'full' },
+ { path: 'allocation', component: AllocationComponent },
+ { path: 'employees', component: EmployeesListComponent, children:[
+  { path: 'new', component: AddEmployeeComponent }, 
+  { path: 'edit/:id', component: EditEmployeeComponent },
+ ]},
+ 
+]; 
+ 
+ 
  
 @NgModule({
  imports: [RouterModule.forRoot(routes)],
