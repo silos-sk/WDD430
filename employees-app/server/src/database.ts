@@ -33,7 +33,7 @@ async function applySchemaValidation(db: mongodb.Db) {
                position: {
                    bsonType: "string",
                    description: "'position' is required and is a string",
-                   minLength: 5
+                   minLength: 3
                },
                level: {
                    bsonType: "string",

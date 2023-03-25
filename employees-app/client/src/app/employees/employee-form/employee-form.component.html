@@ -24,7 +24,7 @@
         Position is required.
       </div>
       <div *ngIf="position.errors?.['minlength']">
-        Position must be at least 5 characters long.
+        Position must be at least 3 characters long.
       </div>
     </div>
 
@@ -44,5 +44,5 @@
       </div>
     </div>
 
-    <button class="btn btn-primary" type="submit" [disabled]="employeeForm.invalid">Add</button>
+    <button class="btn btn-primary" type="submit" [disabled]="employeeForm.invalid">Save</button>
   </form>

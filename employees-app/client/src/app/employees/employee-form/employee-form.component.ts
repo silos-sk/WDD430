@@ -31,7 +31,7 @@ export class EmployeeFormComponent implements OnInit {
    this.initialState.subscribe(employee => {
      this.employeeForm = this.fb.group({
        name: [ employee.name, [Validators.required] ],
-       position: [ employee.position, [ Validators.required, Validators.minLength(5) ] ],
+       position: [ employee.position, [ Validators.required, Validators.minLength(3) ] ],
        level: [ employee.level, [Validators.required] ]
      });
    });

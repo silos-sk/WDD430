@@ -24,7 +24,7 @@ import { AllocationListComponent } from './allocation/allocation-list/allocation
    AllocationComponent,
    HeaderComponent,
    CreateAllocationComponent,
-   AllocationListComponent
+   AllocationListComponent,
  ],
  imports: [
    BrowserModule,

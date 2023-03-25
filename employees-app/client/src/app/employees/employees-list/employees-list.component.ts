@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Employee } from '../../employee';
 import { EmployeeService } from '../../employee.service';
@@ -10,7 +11,7 @@ import { EmployeeService } from '../../employee.service';
 export class EmployeesListComponent implements OnInit {
  employees$: Observable<Employee[]> = new Observable();
  
- constructor(private employeesService: EmployeeService) { }
+ constructor(private employeesService: EmployeeService, private router: Router, private route: ActivatedRoute ) { }
  
  ngOnInit(): void {
    this.fetchEmployees();
@@ -24,5 +25,9 @@ export class EmployeesListComponent implements OnInit {
  
  private fetchEmployees(): void {
    this.employees$ = this.employeesService.getEmployees();
+ }
+
+ onAddEmployee(){
+  this.router.navigate(['new'], {relativeTo: this.route})
  }
 }
