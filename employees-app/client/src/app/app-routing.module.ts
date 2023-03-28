@@ -8,6 +8,8 @@ import { AllocationComponent } from './allocation/allocation.component';
 const routes: Routes = [
  { path: '', redirectTo: 'allocation', pathMatch: 'full' },
  { path: 'allocation', component: AllocationComponent},
+ { path: 'allocation/new', component: AllocationComponent},
+ { path: 'allocation/edit/:id', component: AllocationComponent},
  { path: 'employees', component: EmployeesListComponent, },
  { path: 'employees/new', component: AddEmployeeComponent }, 
  { path: 'employees/edit/:id', component: EditEmployeeComponent },
