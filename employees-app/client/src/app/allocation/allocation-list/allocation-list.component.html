@@ -1,1 +1,39 @@
-<div class="head-alloc">Allocation List</div>
+
+<div class="container text-center">
+    <h2 class="text-center m-3 fs-2 text-info-emphasis
+    ">Theatre Allocation</h2>
+    <h3 class="text-center fs-6 mb-3">{{ myFormattedDate }}</h3>
+    <button class="btn btn-success mb-5 center" [routerLink]="['new']">Create Allocation</button>
+</div>
+
+        <div class="container flex">
+        <!-- card start -->
+        <div class="card m-2" style="width: 18rem;">
+            <div class="card-body">
+                <h4 class="card-title">Theatre 1: <span class="title">OGD</span></h4>
+                <hr/>
+                <table class="table">
+                <tbody>
+                    <tr class="flex">
+                    <th scope="row" class="list">Doctor:</th>
+                    <td class="list">Mark</td>
+                    </tr>
+                    <tr class="flex">
+                    <th class="list"scope="row">Nurse:</th>
+                    <td class="list">Jacob</td>
+                    </tr>
+                    <tr class="flex">
+                    <th scope="row"  class="list">Nurse:</th>
+                    <td class="list">Larry</td>
+
+                    </tr>
+                </tbody>
+                </table>
+                
+                <button class="btn btn-primary me-1">Edit</button>
+                <button class="btn btn-danger">Delete</button>
+        </div>
+        <!-- card end -->
+    </div>
+
+    </div><!-- end of container -->
