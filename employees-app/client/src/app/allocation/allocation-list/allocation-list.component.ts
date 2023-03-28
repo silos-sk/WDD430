@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,5 +8,11 @@ import { Component } from '@angular/core';
   ]
 })
 export class AllocationListComponent {
+  pipe = new DatePipe('en-UK');
+  myFormattedDate: any;
 
+  constructor(public datepipe: DatePipe){
+    const now = Date.now();
+    this.myFormattedDate = this.pipe.transform(now, 'fullDate');
+  }
 }

@@ -13,6 +13,7 @@ import { AllocationComponent } from './allocation/allocation.component';
 import { HeaderComponent } from './header.component';
 import { CreateAllocationComponent } from './allocation/create-allocation/create-allocation.component';
 import { AllocationListComponent } from './allocation/allocation-list/allocation-list.component';
+import { DatePipe } from '@angular/common';
  
 @NgModule({
  declarations: [
@@ -32,7 +33,7 @@ import { AllocationListComponent } from './allocation/allocation-list/allocation
    HttpClientModule,
    ReactiveFormsModule 
  ],
- providers: [],
+ providers: [DatePipe],
  bootstrap: [AppComponent]
 })
 export class AppModule { }
