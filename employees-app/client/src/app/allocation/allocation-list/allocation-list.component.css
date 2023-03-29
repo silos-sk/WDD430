@@ -39,3 +39,12 @@
 .ml-5 {
     justify-content: left;
 }
+
+th {
+    width: 30%;
+    align-items: right;
+}
+
+td {
+    width: 70%;
+}
