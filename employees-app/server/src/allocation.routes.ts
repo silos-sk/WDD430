@@ -7,7 +7,7 @@ allocationRouter.use(express.json());
  
 allocationRouter.get("/", async (_req, res) => {
    try {
-       const allocations = await collections.allocations.find({}).toArray();
+       const allocations = await collections.allocations.find({}).sort("theatreNum").toArray();
        res.status(200).send(allocations);
    } catch (error) {
        res.status(500).send(error.message);
