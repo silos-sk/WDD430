@@ -1,0 +1,168 @@
+<form class="allocation-form" autocomplete="off" [formGroup]="allocationForm" (ngSubmit)="submitForm()">
+<!-- Theater Number -->
+<div class="form-floating mb-3">
+  <input class="form-control" type="number" formControlName="theatreNum" placeholder="theatreNum" required>
+  <label for="theatreNum">Theater Number:</label>
+</div>
+
+<div *ngIf="theatreNum.invalid && (theatreNum.dirty || theatreNum.touched)" class="alert alert-danger">
+
+  <div *ngIf="theatreNum.errors?.['required']">
+    Theatre Number is required and is an integer.
+  </div>
+</div>
+
+  <!-- List - radio options -->
+  <div class="mb-3">
+    <h2 class="fs-4">List:</h2>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" formControlName="list" name="list" id="list-ogd" value="OGD" required>
+      <label class="form-check-label" for="list-ogd">OGD</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" formControlName="list" name="list" id="list-colon" value="Colon">
+      <label class="form-check-label" for="list-colon">Colon</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" formControlName="list" name="list" id="list-eus"
+        value="EUS">
+      <label class="form-check-label" for="list-eus">EUS</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" formControlName="list" name="list" id="list-ercp"
+        value="ERCP">
+      <label class="form-check-label" for="list-ercp">ERCP</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" formControlName="list" name="list" id="list-bronchs"
+        value="Bronchs">
+      <label class="form-check-label" for="list-bronchs">Bronchs</label>
+    </div>
+  </div>
+
+    <!-- Type -->
+    <div class="mb-3">
+      <h2 class="fs-4">Type:</h2>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" formControlName="type" name="type" id="type-diagnostic" value="Diagnostic" required>
+        <label class="form-check-label" for="type-diagnostic">Diagnostic</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" formControlName="type" name="type" id="type-therapeutic" value="Therapeutic">
+        <label class="form-check-label" for="type-therapeutic">Therapeutic</label>
+      </div>
+
+    </div>
+
+     <!-- Doctor -->
+     <div class="form-floating mb-3">
+      <input class="form-control" type="text" formControlName="doctor" placeholder="doctor" required>
+      <label for="doctor">Doctor</label>
+    </div>
+  
+    <div *ngIf="doctor.invalid && (doctor.dirty || doctor.touched)" class="alert alert-danger">
+  
+      <div *ngIf="doctor.errors?.['required']">
+       Doctor is required.
+      </div>
+    </div>
+
+  <!-- Staff 1 -->
+    <div class="mb-3">
+      <h2 class="fs-4">Staff:</h2>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" formControlName="staff1" name="staff1" id="staff1-nurse" value="Nurse" required>
+        <label class="form-check-label" for="staff1-nurse">Nurse</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" formControlName="staff1" name="staff1" id="staff1-hca" value="HCA">
+        <label class="form-check-label" for="staff1-hca">HCA</label>
+      </div>
+
+    </div>
+
+      <!-- Staff1 Name -->
+  <div class="form-floating mb-3">
+    <select class="form-select" formControlName="name1" id="name1" required>
+ 
+      <ng-container *ngFor="let employee of ( employees$ | async )">
+        <option value="{{employee.name}}">{{ employee.name }} - {{ employee.position }}</option>
+     </ng-container>
+    </select>
+    <label for="name1">Select an employee</label>
+   </div>
+ 
+   <div *ngIf="name1.invalid && (name1.dirty || name1.touched)" class="alert alert-danger">
+ 
+     <div *ngIf="name1.errors?.['required']">
+       Name is required.
+     </div>
+   </div>
+
+    <!-- Staff 2-->
+    <div class="mb-3">
+      <h2 class="fs-4">Staff:</h2>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" formControlName="staff2" name="staff2" id="staff2-nurse" value="Nurse" required>
+        <label class="form-check-label" for="staff2-nurse">Nurse</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" formControlName="staff2" name="staff2" id="staff2-hca" value="HCA">
+        <label class="form-check-label" for="staff2-hca">HCA</label>
+      </div>
+
+    </div>
+
+     <!-- Staff2 Name -->
+  <div class="form-floating mb-3">
+    <select class="form-select" formControlName="name2" id="name2" required>
+      <ng-container *ngFor="let employee of ( employees$ | async )">
+        <option value="{{employee.name}}">{{ employee.name }} - {{ employee.position }}</option>
+     </ng-container>
+    </select>
+    <label for="name2">Select an employee</label>
+   </div>
+ 
+   <div *ngIf="name2.invalid && (name2.dirty || name2.touched)" class="alert alert-danger">
+ 
+     <div *ngIf="name2.errors?.['required']">
+       Name is required.
+     </div>
+   </div>
+
+      <!-- Name -->
+  <!-- <div class="form-floating mb-3" *ngFor="let employee of employees$ | async">
+    <select class="form-select" aria-label="name" id="name" aria-placeholder="Select an employee"  >
+      <option selected>Open this select menu</option>
+        <option>{{employee.name}}</option>
+
+        <td>
+    </select>
+  </div> -->
+
+  <!-- Name -->
+  <!-- <div class="form-floating mb-3">
+    <input class="form-control" type="text" formControlName="name" placeholder="name" required>
+    <label for="name">Name</label>
+  </div> -->
+
+  <!-- <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+
+    <div *ngIf="name.errors?.['required']">
+      Name is required.
+    </div>
+  </div> -->
+
+
+    <!-- Comments -->
+    <!-- <div class="form-floating mb-3">
+      <input class="form-control" type="text" formControlName="comments" placeholder="comments">
+      <label for="comments">Comments</label>
+    </div>
+  
+    <div *ngIf="comments.invalid && (comments.dirty || comments.touched)" class="alert alert-danger">
+  
+    </div> -->
+
+    <button class="btn btn-primary" type="submit" [disabled]="allocationForm.invalid">Save</button>
+  </form>

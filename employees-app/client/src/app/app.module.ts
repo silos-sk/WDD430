@@ -11,9 +11,10 @@ import { AddEmployeeComponent } from './employees/add-employee/add-employee.comp
 import { EditEmployeeComponent } from './employees/edit-employee/edit-employee.component';
 import { AllocationComponent } from './allocation/allocation.component';
 import { HeaderComponent } from './header.component';
-import { CreateAllocationComponent } from './allocation/create-allocation/create-allocation.component';
+import { AddAllocationComponent } from './allocation/add-allocation/add-allocation.component';
 import { AllocationListComponent } from './allocation/allocation-list/allocation-list.component';
 import { DatePipe } from '@angular/common';
+import { AllocationFormComponent } from './allocation/allocation-form/allocation-form.component';
  
 @NgModule({
  declarations: [
@@ -24,8 +25,9 @@ import { DatePipe } from '@angular/common';
    EditEmployeeComponent,
    AllocationComponent,
    HeaderComponent,
-   CreateAllocationComponent,
+   AddAllocationComponent,
    AllocationListComponent,
+   AllocationFormComponent
  ],
  imports: [
    BrowserModule,

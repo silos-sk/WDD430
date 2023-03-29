@@ -6,34 +6,34 @@
     <button class="btn btn-success mb-5 center" [routerLink]="['new']">Create Allocation</button>
 </div>
 
-        <div class="container flex">
+    <div class="container-fluid flex f-center">
         <!-- card start -->
-        <div class="card m-2" style="width: 18rem;">
+        <div class="card m-2" style="width: 18rem;" *ngFor="let allocation of allocations$ | async">
             <div class="card-body">
-                <h4 class="card-title">Theatre 1: <span class="title">OGD</span></h4>
+                <h4 class="card-title"><span class="upper">Theatre {{ allocation.theatreNum }}:</span><br> <span class="title">{{ allocation.list }} - {{ allocation.type }}</span></h4>
                 <hr/>
                 <table class="table">
                 <tbody>
                     <tr class="flex">
                     <th scope="row" class="list">Doctor:</th>
-                    <td class="list">Mark</td>
-                    </tr>
-                    <tr class="flex">
-                    <th class="list"scope="row">Nurse:</th>
-                    <td class="list">Jacob</td>
-                    </tr>
-                    <tr class="flex">
-                    <th scope="row"  class="list">Nurse:</th>
-                    <td class="list">Larry</td>
+                        <td class="list ml-5">{{ allocation.doctor }}</td>
+                        </tr>
+                        <tr class="flex">
+                        <th class="list"scope="row">{{ allocation.staff1 }}:</th>
+                        <td class="list ml-5">{{ allocation.name1 }}</td>
+                        </tr>
+                        <tr class="flex">
+                        <th scope="row"  class="list">{{ allocation.staff2 }}:</th>
+                        <td class="list ml-5">{{ allocation.name2 }}</td>
 
-                    </tr>
-                </tbody>
-                </table>
-                
-                <button class="btn btn-primary me-1">Edit</button>
-                <button class="btn btn-danger">Delete</button>
-        </div>
-        <!-- card end -->
+                        </tr>
+                    </tbody>
+                    </table>
+                    
+                    <button class="btn btn-primary me-1"[routerLink]="['edit/', allocation._id]">Edit</button>
+                    <button class="btn btn-danger" (click)="deleteAllocation(allocation._id || '')">Delete</button>
+            </div>
+             <!-- card end -->
     </div>
 
     </div><!-- end of container -->

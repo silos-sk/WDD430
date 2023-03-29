@@ -27,7 +27,7 @@ export class DataStorageService {
         return {...recipe, ingredients: recipe.ingredients ? recipe.ingredients : []};
       });
     })
-      tap(recipes => {
+      ,tap(recipes => {
         this.recipeService.setRecipes(recipes);
       })
     )

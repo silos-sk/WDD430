@@ -12,12 +12,30 @@
 
 .list {
     border: none;
+    text-align: left;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
 }
 
 .flex {
     display: flex;
 }
 
+.f-center{
+    justify-content: center;
+}
+
+.right{
+   text-align: right;
+}
+
 .center {
    margin: 0 auto;
+}
+
+.ml-5 {
+    justify-content: left;
 }

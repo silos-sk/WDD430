@@ -4,12 +4,13 @@ import { EmployeesListComponent } from './employees/employees-list/employees-lis
 import { AddEmployeeComponent } from './employees/add-employee/add-employee.component'; 
 import { EditEmployeeComponent } from './employees/edit-employee/edit-employee.component'; 
 import { AllocationComponent } from './allocation/allocation.component';
+import { AddAllocationComponent } from './allocation/add-allocation/add-allocation.component';
  
 const routes: Routes = [
- { path: '', redirectTo: 'allocation', pathMatch: 'full' },
- { path: 'allocation', component: AllocationComponent},
- { path: 'allocation/new', component: AllocationComponent},
- { path: 'allocation/edit/:id', component: AllocationComponent},
+ { path: '', redirectTo: 'allocations', pathMatch: 'full' },
+ { path: 'allocations', component: AllocationComponent},
+ { path: 'allocations/new', component: AddAllocationComponent},
+ { path: 'allocations/edit/:id', component: AllocationComponent},
  { path: 'employees', component: EmployeesListComponent, },
  { path: 'employees/new', component: AddEmployeeComponent }, 
  { path: 'employees/edit/:id', component: EditEmployeeComponent },

@@ -50,36 +50,52 @@ async function applySchemaValidation(db: mongodb.Db) {
    };
 
    const allocSchema = {
-    $allocSchema: {
+    $jsonSchema: {
         bsonType: "object",
-        required: ["list", "type", "doctor", "staff"],
+        required: ["theatreNum", "list", "type", "doctor", "staff1", "name1", "staff2", "name2"],
         additionalProperties: false,
         properties: {
             _id: {},
+            theatreNum: {
+                bsonType: "int",
+                description: "'Theatre Number' is required"
+            },
             list: {
                 bsonType: "string",
-                description: "'staff' is required and is one of 'OGD', 'Colon', 'EUS', 'ERCP', or 'Bronchs'",
+                description: "'List' is required and is one of 'OGD', 'Colon', 'EUS', 'ERCP', or 'Bronchs'",
                 enum: ["OGD", "Colon", "EUS", "ERCP", "Bronchs"],
             },
             type: {
                 bsonType: "string",
-                description: "'type' is required and is a string",
-                minLength: 3
+                description: "'type' is required and is one of 'Diagnostic', or 'Therapeutic' ",
+                enum: ["Diagnostic", "Therapeutic"]
             },
             doctor: {
                 bsonType: "string",
                 description: "'doctor' is required and is a string",
-                minLength: 2
             },
-            staff: {
+            staff1: {
                 bsonType: "string",
                 description: "'staff' is required and is one of 'Nurse', or 'HCA'",
                 enum: ["Nurse", "HCA"],
             },
-            name: {
+            name1: {
                 bsonType: "string",
                 description: "'name' is required and is a string",
             },
+            staff2: {
+                bsonType: "string",
+                description: "'staff' is required and is one of 'Nurse', or 'HCA'",
+                enum: ["Nurse", "HCA"],
+            },
+            name2: {
+                bsonType: "string",
+                description: "'name' is required and is a string",
+            }
+            // comments: {
+            //     bsonType: "string",
+            //     description: "'comment' is required and is a string; type 'N/A' if not applicable",
+            // },
         },
     },
 };
