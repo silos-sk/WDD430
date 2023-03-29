@@ -35,7 +35,7 @@ import { EditAllocationComponent } from './allocation/edit-allocation/edit-alloc
    BrowserModule,
    AppRoutingModule,
    HttpClientModule,
-   ReactiveFormsModule 
+   ReactiveFormsModule
  ],
  providers: [DatePipe],
  bootstrap: [AppComponent]

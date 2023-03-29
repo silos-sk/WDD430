@@ -65,7 +65,4 @@ export class AllocationFormComponent implements OnInit {
    this.formSubmitted.emit(this.allocationForm.value);
  }
 
-//  private fetchEmployees(): void {
-  
-// }
 }
