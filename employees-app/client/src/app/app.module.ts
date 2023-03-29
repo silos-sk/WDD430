@@ -15,6 +15,7 @@ import { AddAllocationComponent } from './allocation/add-allocation/add-allocati
 import { AllocationListComponent } from './allocation/allocation-list/allocation-list.component';
 import { DatePipe } from '@angular/common';
 import { AllocationFormComponent } from './allocation/allocation-form/allocation-form.component';
+import { EditAllocationComponent } from './allocation/edit-allocation/edit-allocation.component';
  
 @NgModule({
  declarations: [
@@ -24,6 +25,7 @@ import { AllocationFormComponent } from './allocation/allocation-form/allocation
    AddEmployeeComponent,
    EditEmployeeComponent,
    AllocationComponent,
+   EditAllocationComponent,
    HeaderComponent,
    AddAllocationComponent,
    AllocationListComponent,
