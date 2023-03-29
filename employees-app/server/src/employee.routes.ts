@@ -7,7 +7,7 @@ employeeRouter.use(express.json());
  
 employeeRouter.get("/", async (_req, res) => {
    try {
-       const employees = await collections.employees.find({}).toArray();
+       const employees = await collections.employees.find({}).sort("position").toArray();
        res.status(200).send(employees);
    } catch (error) {
        res.status(500).send(error.message);
